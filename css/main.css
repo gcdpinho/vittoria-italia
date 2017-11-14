@@ -936,3 +936,27 @@ ul.nostyle i {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+/* CUSTOM */
+
+#logo{
+  width: 200px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+  .navbar-header{
+    float: none;
+  }
+
+  .navbar-toggle{
+    display: block;
+  }
+
+  .navbar-collapse.collapse{
+    display: none !important;
+  }
+
+  .navbar-collapse.collapse.in{
+    display: block !important;
+  }
+}
