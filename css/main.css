@@ -960,3 +960,7 @@ ul.nostyle i {
     display: block !important;
   }
 }
+
+#colecao, #sobre, #contato{
+  padding: 100px 0;
+}
