@@ -230,4 +230,17 @@ jQuery(function($) {'use strict';
 	}
 	google.maps.event.addDomListener(window, 'load', initialize_map);
 
+
+	// CUSTOM
+
+	$('.controlGa').click(function(){
+		var gaState = $('.gallery');
+		if (gaState.css('display') == "block")
+			gaState.css('display', 'none');
+		else
+			gaState.css('display', 'block');
+	});
+
+	$('.lazyload2').lazyload();
+
 });
