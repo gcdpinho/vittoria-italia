@@ -967,4 +967,46 @@ ul.nostyle i {
 
 .gallery{
   display: none;
+  margin-top: 2em;
+}
+
+.img-gallery{
+  width: 100%;
+  cursor: pointer;
+}
+
+.background-gallery{
+  display:none;
+  background-color: black;
+  opacity: 0.8;
+  width: 100%;
+  z-index: 99999;
+  position: absolute;
+}
+
+#gallery-slider{
+  display: none;
+  position:absolute;
+  z-index: 999999;
+  min-width: 80% !important;
+  min-height: 80% !important;
+  left: 10%;
+}
+
+.row.ga{
+  margin-top:2em;
+}
+
+.fa.fa-times{
+  position: absolute;
+  display: none;
+  color: #a6a6a6;
+  right: 2%;
+  font-size: 30px;
+  z-index: 999999;
+  cursor: pointer;
+}
+
+.fa.fa-times:hover{
+  color: white;
 }
