@@ -229,8 +229,12 @@ jQuery(function ($) {
 	});
 
 	//Google Map
-	var latitude = $('#google-map').data('latitude');
-	var longitude = $('#google-map').data('longitude');
+	//var latitude = $('#google-map').data('latitude');
+	//var longitude = $('#google-map').data('longitude');
+
+	//Gaspar LatLong
+	var latitude = -26.9313639;
+	var longitude = -48.9653733;
 
 	function initialize_map() {
 		var myLatlng = new google.maps.LatLng(latitude, longitude);
