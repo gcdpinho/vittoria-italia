@@ -17,7 +17,7 @@ body {
   background: #fff;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  color: #64686d;
+  color: #232323;
   line-height: 26px;
 }
 
@@ -100,20 +100,18 @@ hr {
   background: #6f1918;
 }
 
-.btn {
-  border-width: 0;
-  border-bottom-width: 3px;
-  border-radius: 3px;
-}
-
 .btn.btn-primary {
-  background: #6f1918;
-  border-color: #6f1918;
+  background: transparent;
+  border: 2px solid #6f1918;
+  color: #6f1918;
+  font-weight: 500;
+  font-size: 17px;
 }
 
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
   background: #6f1918;
+  color: white;
 }
 
 .column-title {
@@ -1135,6 +1133,10 @@ ul.nostyle i {
   }
 }
 
+#sobre {
+  background-color: #eeee;
+}
+
 #colecao,
 #sobre,
 #contato {
@@ -1188,4 +1190,19 @@ ul.nostyle i {
 
 p {
   text-align: justify;
+}
+
+.mrl0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .vc_single_image-img {
+    width: 100%;
+  }
+}
+
+.mt1em {
+  margin-top: 1em;
 }
