@@ -141,10 +141,9 @@
 
     <section id="colecao">
         <i class="fa fa-times" aria-hidden="true"></i>
-        <div class="fadeInDown animated" id="gallery-slider">
-            <img alt="Image 1 Title" src="images/thumbs/thumb1.jpg" data-image="images/big/image1.jpg" data-description="Image 1 Description">
-            <img alt="Image 2 Title" src="images/thumbs/thumb2.jpg" data-image="images/big/image2.jpg" data-description="Image 2 Description">
-            <img alt="Image 3 Title" src="images/thumbs/thumb3.jpg" data-image="images/big/image3.jpg" data-description="Image 3 Description">
+        <div class="fadeInDown animated" id="gallery-slider-masculino">
+        </div>
+        <div class="fadeInDown animated" id="gallery-slider-feminino">
         </div>
         <div class="background-gallery"></div>
         <div class="container">
@@ -157,16 +156,20 @@
                 <div class="col-sm-6 wow fadeInLeft">
                     <h3 class="column-title">MASCULINO</h3>
                     <img class="img-responsive" src="images/main-feature.png" alt="">
-                    <a class="btn btn-primary controlGa" href="javascript:;">Learn More</a>
+                    <a class="btn btn-primary controlGa" href="javascript:;" value="masculino">Learn More</a>
                 </div>
 
                 <div class="col-sm-6 wow fadeInRight">
                     <h3 class="column-title">FEMININO</h3>
                     <img class="img-responsive" src="images/main-feature.png" alt="">
-                    <a class="btn btn-primary controlGa" href="javascript:;">Learn More</a>
+                    <a class="btn btn-primary controlGa" href="javascript:;" value="feminino">Learn More</a>
                 </div>
             </div>
-            <div class="gallery fadeInDown animated">
+            <div class="gallery">
+                <div class="col-md-4 0 text-center"></div>
+                <div class="col-md-4 1 text-center"></div>
+                <div class="col-md-4 2 text-center"></div>
+                <!--
                 <div class="row ga">
                     <div class="col-md-4 text-center">
                         <img class="img-gallery" data-src="images/big/image1.jpg">
@@ -211,6 +214,7 @@
                         <img class="img-gallery" data-src="images/big/image2.jpg">
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </section>

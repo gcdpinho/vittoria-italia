@@ -973,6 +973,7 @@ ul.nostyle i {
 .img-gallery{
   width: 100%;
   cursor: pointer;
+  margin-bottom: 2em;
 }
 
 .background-gallery{
@@ -984,17 +985,13 @@ ul.nostyle i {
   position: absolute;
 }
 
-#gallery-slider{
+#gallery-slider-masculino, #gallery-slider-feminino{
   display: none;
   position:absolute;
   z-index: 999999;
   min-width: 80% !important;
   min-height: 80% !important;
   left: 10%;
-}
-
-.row.ga{
-  margin-top:2em;
 }
 
 .fa.fa-times{
