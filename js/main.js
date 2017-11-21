@@ -249,14 +249,15 @@ jQuery(function ($) {
 
 
 	// CUSTOM
+	var apiTop = 0;
 	var apiM = null;
 	var apiF = null;
-	var masculino = ["001.jpg", "002.jpg", "003.jpg", "004.jpg", "005.jpg", "006.jpg", "007.jpg", "008.jpg", "009.jpg",
-	"011.jpg", "013.jpg", "014.jpg", "016.jpg", "018.jpg", "019.jpg", "020.jpg", "021.jpg", "022.jpg", "024.jpg", "025.jpg",
-	"026.jpg", "027.jpg", "028.jpg", "029.jpg", "030.jpg", "031.jpg", "032.jpg", "033.jpg", "035.jpg", "036.jpg", "037.jpg",
-	"038.jpg", "039.jpg", "040.jpg", "041.jpg"];
-	var feminino = ["001.jpg", "002.jpg", "005.jpg", "006.jpg", "010.jpg", "012.jpg", "015.jpg", "017.jpg", "018.jpg", 
-	"023.jpg", "028.jpg", "031.jpg", "032.jpg", "034.jpg", "036.jpg", "038.jpg", "040.jpg"];
+	var masculino = ["001-min.jpg", "002-min.jpg", "003-min.jpg", "004-min.jpg", "005-min.jpg", "006-min.jpg", "007-min.jpg", "008-min.jpg", "009-min.jpg",
+	"011-min.jpg", "013-min.jpg", "014-min.jpg", "016-min.jpg", "018-min.jpg", "019-min.jpg", "020-min.jpg", "021-min.jpg", "022-min.jpg", "024-min.jpg", "025-min.jpg",
+	"026-min.jpg", "027-min.jpg", "028-min.jpg", "029-min.jpg", "030-min.jpg", "031-min.jpg", "032-min.jpg", "033-min.jpg", "035-min.jpg", "036-min.jpg", "037-min.jpg",
+	"038-min.jpg", "039-min.jpg", "040-min.jpg", "041-min.jpg"];
+	var feminino = ["001-min.jpg", "002-min.jpg", "005-min.jpg", "006-min.jpg", "010-min.jpg", "012-min.jpg", "015-min.jpg", "017-min.jpg", "018-min.jpg", 
+	"023-min.jpg", "028-min.jpg", "031-min.jpg", "032-min.jpg", "034-min.jpg", "036-min.jpg", "038-min.jpg", "040-min.jpg"];
 	var filter = null;
 
 	$('.controlGa').click(function () {
@@ -309,8 +310,8 @@ jQuery(function ($) {
 		var index = 0;
 
 		for (var i = 0; i < inUse.length; i++) {
-			$('.col-md-4.' + index).append('<img class="img-gallery fadeInDown animated ' + gen + '" data-src="images/colecao/' + inUse[i] + '" value="' + i + '">')
-			$('#gallery-slider-' + gen).append('<img alt="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a" src="images/colecao/' + inUse[i] + '" data-image="images/colecao/' + inUse[i] + '" data-description="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a">')
+			$('.col-md-4.' + index).append('<img class="img-gallery fadeInDown animated ' + gen + '" data-src="images/colecao-min/' + inUse[i] + '" value="' + i + '">')
+			$('#gallery-slider-' + gen).append('<img alt="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a" src="images/colecao-min/' + inUse[i] + '" data-image="images/colecao-min/' + inUse[i] + '" data-description="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a">')
 			if (index == 2)
 				index = 0;
 			else
@@ -326,20 +327,51 @@ jQuery(function ($) {
 
 			$('.background-gallery').css('display', 'block');
 			$('.background-gallery').css('height', $('body').height())
-			$('#gallery-slider-' + gen).css('display', 'block');
-			$('#gallery-slider-' + gen).css('top', 'calc(' + $(window).scrollTop() + 'px + 10%)')
+			$('#gallery-slider-' + gen).css('display', 'block');			
 			$('.fa.fa-times').css('display', 'block');
 			$('.fa.fa-times').css('top', $(window).scrollTop() + 25);
 			if (gen == "masculino") {
-				if (apiM == null)
+				if (apiM == null){
 					apiM = $('#gallery-slider-' + gen).unitegallery();
+
+					apiM.on("enter_fullscreen",function(){	
+						$('#gallery-slider-'+gen).css({
+							'left': 'auto',
+							'top'  : ''
+						})
+					});
+
+					apiM.on("exit_fullscreen",function(){
+						$('#gallery-slider-'+gen).css({
+							'left': '10%',
+							'top'  : $(window).scrollTop() + $(window).height()/2 - $('#gallery-slider-'+gen).height()/2
+						})	
+					});
+				}
 				apiM.selectItem(parseInt($(this).attr("value")));
+				
 			} else {
-				if (apiF == null)
+				if (apiF == null) {
 					apiF = $('#gallery-slider-' + gen).unitegallery();
+
+					apiF.on("enter_fullscreen",function(){	
+						$('#gallery-slider-'+gen).css({
+							'left': 'auto',
+							'top'  : ''
+						})
+					});
+
+					apiF.on("exit_fullscreen",function(){
+						$('#gallery-slider-'+gen).css({
+							'left': '10%',
+							'top'  : $(window).scrollTop() + $(window).height()/2 - $('#gallery-slider-'+gen).height()/2
+						})	
+					});
+				}
 				apiF.selectItem(parseInt($(this).attr("value")));
 			}
-
+			$('#gallery-slider-' + gen).css('top', $(window).scrollTop() + $(window).height()/2 - $('#gallery-slider-'+gen).height()/2)
+			
 		});
 		$('.img-gallery.' + gen).lazyload();
 	}
