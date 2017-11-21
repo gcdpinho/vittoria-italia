@@ -251,8 +251,12 @@ jQuery(function ($) {
 	// CUSTOM
 	var apiM = null;
 	var apiF = null;
-	var masculino = ["image1.jpg", "image2.jpg", "image3.jpg"];
-	var feminino = ["image3.jpg", "image2.jpg", "image1.jpg"];
+	var masculino = ["001.jpg", "002.jpg", "003.jpg", "004.jpg", "005.jpg", "006.jpg", "007.jpg", "008.jpg", "009.jpg",
+	"011.jpg", "013.jpg", "014.jpg", "016.jpg", "018.jpg", "019.jpg", "020.jpg", "021.jpg", "022.jpg", "024.jpg", "025.jpg",
+	"026.jpg", "027.jpg", "028.jpg", "029.jpg", "030.jpg", "031.jpg", "032.jpg", "033.jpg", "035.jpg", "036.jpg", "037.jpg",
+	"038.jpg", "039.jpg", "040.jpg", "041.jpg"];
+	var feminino = ["001.jpg", "002.jpg", "005.jpg", "006.jpg", "010.jpg", "012.jpg", "015.jpg", "017.jpg", "018.jpg", 
+	"023.jpg", "028.jpg", "031.jpg", "032.jpg", "034.jpg", "036.jpg", "038.jpg", "040.jpg"];
 	var filter = null;
 
 	$('.controlGa').click(function () {
@@ -305,8 +309,8 @@ jQuery(function ($) {
 		var index = 0;
 
 		for (var i = 0; i < inUse.length; i++) {
-			$('.col-md-4.' + index).append('<img class="img-gallery fadeInDown animated ' + gen + '" data-src="images/big/' + inUse[i] + '" value="' + i + '">')
-			$('#gallery-slider-' + gen).append('<img alt="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a" src="images/big/' + inUse[i] + '" data-image="images/big/' + inUse[i] + '" data-description="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a">')
+			$('.col-md-4.' + index).append('<img class="img-gallery fadeInDown animated ' + gen + '" data-src="images/colecao/' + inUse[i] + '" value="' + i + '">')
+			$('#gallery-slider-' + gen).append('<img alt="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a" src="images/colecao/' + inUse[i] + '" data-image="images/colecao/' + inUse[i] + '" data-description="Coleção ' + gen[0].toUpperCase() + gen.substring(1, gen.length - 1) + 'a">')
 			if (index == 2)
 				index = 0;
 			else
