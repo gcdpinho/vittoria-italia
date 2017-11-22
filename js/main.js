@@ -51,7 +51,7 @@ jQuery(function ($) {
 
 	//Slider
 	$(document).ready(function () {
-		var time = 7; // time in seconds
+		var time = 10; // time in seconds
 
 		var $progressBar,
 			$bar,
@@ -273,9 +273,11 @@ jQuery(function ($) {
 		if (gen == "masculino") {
 			var inUse = masculino;
 			var otherGen = "feminino";
+			$("#galeria").find('.section-title').text("Coleção Masculina")
 		} else {
 			var inUse = feminino;
 			var otherGen = "masculino";
+			$("#galeria").find('.section-title').text("Coleção Feminina")
 		}
 
 		var vGen = findGen(gen, 'none');
@@ -291,9 +293,11 @@ jQuery(function ($) {
 
 		if (gaState.css('display') == "block" && filter == gen) {
 			gaState.css('display', 'none');
+			$("#galeria").css('display', 'none')
 			filter = null;
 		} else {
 			gaState.css('display', 'block');
+			$("#galeria").css('display', 'block')
 			filter = gen;
 		}
 
