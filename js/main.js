@@ -74,7 +74,7 @@ jQuery(function ($) {
 			afterMove: moved,
 			startDragging: pauseOnDragging,
 			//autoHeight : true,
-			transitionStyle: "fadeUp"
+			transitionStyle: "backSlide"
 		});
 
 		//Init progressBar where elem is $("#owl-demo")
