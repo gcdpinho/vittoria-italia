@@ -1135,14 +1135,15 @@ ul.nostyle i {
   }
 }
 
-#sobre {
+#videos, #contato {
   background-color: #eeee;
 }
 
 #colecao,
 #sobre,
 #contato,
-#galeria {
+#galeria,
+#videos {
   padding: 100px 0;
 }
 
@@ -1231,3 +1232,20 @@ a.aznicsis:hover{
   font-weight: bold;
   color: white !important;
 }
+
+#my-player{
+  margin: auto;
+}
+
+#gallery-videos{
+  margin-top: 5em;
+}
+
+.section-header .other.section-title:before{
+  background: white;
+}
+
+.section-header .other.section-title:after{
+  border: 5px solid #fffe;
+}
+

@@ -19,6 +19,9 @@
     <link href="unitegallery/css/unite-gallery.css" rel="stylesheet">
     <link href="unitegallery/themes/default/ug-theme-default.css" rel="stylesheet">
     <link href="unitegallery/themes/video/skin-right-thumb.css" rel="stylesheet">
+    <link href="css/video-js.css" rel="stylesheet">
+    <link href="css/videojs-download-button.css" rel="stylesheet">
+
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -208,11 +211,22 @@
     </section>
     <section id="videos">
         <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown">Assista nossos vídeos</h2>
+            <h2 class="section-title other text-center wow fadeInDown">Assista nossos vídeos</h2>
             <p class="text-center wow fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                 <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
         </div>
-        <div id="gallery-videos">
+        <div id="gallery-videos" class="container text-center wow fadeInDown">
+            <video id="my-player" class="video-js" controls preload="auto" data-setup='{}'>
+                <source src="videos/video1.mp4" type="video/mp4"></source>
+                <!--
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="http://videojs.com/html5-video-support/" target="_blank">
+                        supports HTML5 video
+                    </a>
+                </p>
+            -->
+            </video>
         </div>
     </section>
     <section id="sobre">
@@ -287,7 +301,7 @@
     <section id="contato">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title text-center wow fadeInDown">Entre em contato</h2>
+                <h2 class="section-title other text-center wow fadeInDown">Entre em contato</h2>
                 <p class="text-center wow fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                     <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
             </div>
@@ -389,6 +403,8 @@
     <script src='unitegallery/js/unitegallery.min.js'></script>
     <script src='unitegallery/themes/default/ug-theme-default.js'></script>
     <script src='unitegallery/themes/video/ug-theme-video.js'></script>
+    <script src="js/video.js"></script>
+    <script src="js/videojs-download-button.min.js"></script>
 </body>
 
 </html>

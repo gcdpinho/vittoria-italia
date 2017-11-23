@@ -398,6 +398,17 @@ jQuery(function ($) {
 		$('.fa.fa-times').css('display', 'none');
 	});
 
-	$('#google-map').height($('.contact-form').height()+150)
+	$('#google-map').height($('.contact-form').height() + 150)
+
+	$('#my-player').width($(window).width() * 60/100);
+	$('#my-player').height($('#my-player').width()/2);
+	//$('#my-player').css('margin-left', $(window).width()/2 - $('#my-player').width()/2);
+
+	var player = videojs('my-player');
+	var dimension = "normal";
+	player.downloadButton();
+
+	$('#my-player_html5_api').width('100%');
+	$('#my-player_html5_api').height('100%');
 
 });
