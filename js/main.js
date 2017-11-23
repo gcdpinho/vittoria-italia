@@ -403,12 +403,15 @@ jQuery(function ($) {
 	$('#my-player').width($(window).width() * 60/100);
 	$('#my-player').height($('#my-player').width()/2);
 	//$('#my-player').css('margin-left', $(window).width()/2 - $('#my-player').width()/2);
-
+	
 	var player = videojs('my-player');
-	var dimension = "normal";
 	player.downloadButton();
+
+	player.on('fullscreenchange', function(){
+		if ($('#gallery-videos').hasClass('animated'))
+			$('#gallery-videos').removeClass('animated');
+	});
 
 	$('#my-player_html5_api').width('100%');
 	$('#my-player_html5_api').height('100%');
-
 });
