@@ -1182,6 +1182,7 @@ ul.nostyle i {
   width: 100%;
   z-index: 99999;
   position: absolute;
+  top: 0;
 }
 
 #gallery-slider-masculino,

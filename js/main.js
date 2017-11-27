@@ -392,18 +392,6 @@ jQuery(function ($) {
 		$('.img-gallery.' + gen).lazyload();
 	}
 
-
-
-	$('.fa.fa-times').click(function () {
-		$('body').css('overflow', 'auto');
-
-		$('.background-gallery').css('display', 'none');
-		$('#gallery-slider-masculino').css('display', 'none');
-		$('#gallery-slider-feminino').css('display', 'none');
-		$('#gallery-slider').css('display', 'none');
-		$('.fa.fa-times').css('display', 'none');
-	});
-
 	$('#google-map').height($('.contact-form').height() + 150)
 
 	$('#my-player0').width($(window).width() * 60 / 100);
@@ -475,7 +463,7 @@ jQuery(function ($) {
 		}
 	}
 
-	var grid = $('.grid');
+
 	/*
 	var indexImages = 0;
 	for (var i=0; i<all.length; i++){
@@ -487,6 +475,7 @@ jQuery(function ($) {
 	}
 	*/
 	//$('.img-lazyload').lazyload();
+	var grid = $('.grid');
 	grid.isotope({
 		itemSelector: '.grid-item',
 		layoutMode: 'fitRows'
@@ -502,6 +491,8 @@ jQuery(function ($) {
 		$(this).addClass('bt-active');
 	});
 
+	var valueImage = 0;
+	var api = null;
 	$('.img-isotope').click(function () {
 		if ($(window).width() >= 1024) {
 
@@ -514,28 +505,63 @@ jQuery(function ($) {
 
 			var active = $('.bt-active');
 			var inUse = []
-			if ((active.length == 0 || active.attr('data-filter') == "*") && active.attr('value') != "all"){
-				inUse = all;
-				active.attr('value', "all");
-			}
-			else if (active.attr('data-filter') == ".masculino" && active.attr('value') != "masculino"){
-				inUse = masculino;
-				active.attr('value', 'masculino');
-			}
-			else if (active.attr('value') != "feminino"){
+
+			if (active.length == 0 || active.attr('data-filter') == "*") {
+				if ($('#gallery-slider').attr('value') != "all") {
+					inUse = all;
+					$('#gallery-slider').attr('value', "all");
+					valueImage = $(this).attr('value');
+				}
+			} else if (active.attr('data-filter') == ".masculino") {
+				if ($('#gallery-slider').attr('value') != "masculino") {
+					inUse = masculino;
+					$('#gallery-slider').attr('value', 'masculino');
+					valueImage = $(this).attr('data-masc');
+				}
+			} else if ($('#gallery-slider').attr('value') != "feminino") {
 				inUse = feminino;
-				active.attr('value', 'feminino');
+				$('#gallery-slider').attr('value', 'feminino');
+				valueImage = $(this).attr('data-fem');
 			}
-			if (inUse.length == 0)
-				$('#gallery-slider').html('');
-			for (var i = 0; i < inUse.length; i++)
-				$('#gallery-slider').append('<img alt="Coleção Verão 2017" src="images/colecao-min/' + inUse[i] + '" data-image="images/colecao-min/' + inUse[i] + '" data-description="Coleção Verão 2017">');
+			if (inUse.length != 0) {
+				$('#gallery-slider').remove();
+				$('#colecao').append('<div class="fadeInDown animated" id="gallery-slider" value=""></div>');
 
-			$("#gallery-slider").unitegallery();
+				for (var i = 0; i < inUse.length; i++)
+					$('#gallery-slider').append('<img alt="Coleção Verão 2017" src="images/colecao-min/' + inUse[i] + '" data-image="images/colecao-min/' + inUse[i] + '" data-description="Coleção Verão 2017">');
 
-			$('#gallery-slider').css('top', $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2)
+
+				api = $('#gallery-slider').unitegallery();
+
+				api.on("enter_fullscreen", function () {
+					$('#gallery-slider').css({
+						'left': 'auto',
+						'top': ''
+					})
+				});
+
+				api.on("exit_fullscreen", function () {
+					$('#gallery-slider').css({
+						'left': '10%',
+						'top': $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2
+					});
+				});
+
+				api.selectItem(parseInt(valueImage));
+
+				$('#gallery-slider').css('top', $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2)
+			}
 		}
 	});
 
+	$('.fa.fa-times').click(function () {
+		$('body').css('overflow', 'auto');
 
+		$('.background-gallery').css('display', 'none');
+		api.stop();
+		//$('#gallery-slider-masculino').css('display', 'none');
+		//$('#gallery-slider-feminino').css('display', 'none');
+		$('#gallery-slider').css('display', 'none');
+		$('.fa.fa-times').css('display', 'none');
+	});
 });
