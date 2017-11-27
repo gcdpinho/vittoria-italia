@@ -400,18 +400,56 @@ jQuery(function ($) {
 
 	$('#google-map').height($('.contact-form').height() + 150)
 
-	$('#my-player').width($(window).width() * 60/100);
-	$('#my-player').height($('#my-player').width()/2);
+	$('#my-player0').width($(window).width() * 60 / 100);
+	$('#my-player0').height($('#my-player0').width() / 2);
 	//$('#my-player').css('margin-left', $(window).width()/2 - $('#my-player').width()/2);
-	
-	var player = videojs('my-player');
+
+	var player = videojs('my-player0');
 	player.downloadButton();
 
-	player.on('fullscreenchange', function(){
+	player.on('fullscreenchange', function () {
 		if ($('#gallery-videos').hasClass('animated'))
 			$('#gallery-videos').removeClass('animated');
 	});
 
-	$('#my-player_html5_api').width('100%');
-	$('#my-player_html5_api').height('100%');
+	$('#my-player0_html5_api').width('100%');
+	$('#my-player0_html5_api').height('100%');
+
+
+	var videos = ['video-colecao-verao.mp4', 'video1.mp4', 'video2.mp4', 'video3.mp4', 'video4.mp4', 'video5.mp4'];
+	var indexVideos = 0;
+
+	$('i.fa.fa-chevron-right').click(slider_videos);
+	$('i.fa.fa-chevron-left').click(slider_videos);
+	function slider_videos() {
+		$('#my-player' + indexVideos).css('display', 'none');
+		if ($(this).hasClass('fa-chevron-right'))
+			if (indexVideos == videos.length - 1)
+				indexVideos = 0;
+			else
+				indexVideos++;
+		else
+			if (indexVideos == 0)
+				indexVideos = videos.length-1;
+			else
+				indexVideos--;
+
+		if ($('#my-player' + indexVideos).length == 0) {
+			$('.slider-videos').append('<video id="my-player' + indexVideos + '" class="video-js" controls preload="auto" data-setup="{}"> <source src="videos/' + videos[indexVideos] + '" type="video/mp4">	</video>');
+			var playerAux = videojs('my-player' + indexVideos);
+			playerAux.downloadButton();
+
+			playerAux.on('fullscreenchange', function () {
+				if ($('#gallery-videos').hasClass('animated'))
+					$('#gallery-videos').removeClass('animated');
+			});
+
+			$('#my-player' + indexVideos).width($(window).width() * 60 / 100);
+			$('#my-player' + indexVideos).height($('#my-player0').width() / 2);
+
+			$('#my-player' + indexVideos + '_html5_api').width('100%');
+			$('#my-player' + indexVideos + '_html5_api').height('100%');
+		} else
+			$('#my-player' + indexVideos).css('display', 'block');
+	}
 });
