@@ -19,6 +19,7 @@ body {
   font-weight: 400;
   color: #232323;
   line-height: 26px;
+  overflow-x: hidden;
 }
 
 h1,
@@ -1266,10 +1267,17 @@ a.aznicsis:hover {
   border: 5px solid #fffe;
 }
 
-i.fa.fa-chevron-right,
+i.fa.fa-chevron-right{
+  cursor: pointer;
+  font-size: 35px;
+  position: absolute;
+  right: 7.5%;
+}
 i.fa.fa-chevron-left {
   cursor: pointer;
   font-size: 35px;
+  position: absolute;
+  left: 7.5%;
 }
 
 i.fa.fa-chevron-right:hover,

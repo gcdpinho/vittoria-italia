@@ -339,7 +339,7 @@ jQuery(function ($) {
 				else
 					var gen = "feminino"
 
-				$('body').css('overflow', 'hidden');
+				$('body').css('overflow-y', 'hidden');
 
 				$('.background-gallery').css('display', 'block');
 				$('.background-gallery').css('height', $('body').height())
@@ -496,7 +496,7 @@ jQuery(function ($) {
 	$('.img-isotope').click(function () {
 		if ($(window).width() >= 1024) {
 
-			$('body').css('overflow', 'hidden');
+			$('body').css('overflow-y', 'hidden');
 			$('.background-gallery').css('display', 'block');
 			$('.background-gallery').css('height', $('body').height());
 			$('#gallery-slider').css('display', 'block');
@@ -555,7 +555,7 @@ jQuery(function ($) {
 	});
 
 	$('.fa.fa-times').click(function () {
-		$('body').css('overflow', 'auto');
+		$('body').css('overflow-y', 'auto');
 
 		$('.background-gallery').css('display', 'none');
 		api.stop();
