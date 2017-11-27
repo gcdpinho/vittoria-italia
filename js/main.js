@@ -264,6 +264,11 @@ jQuery(function ($) {
 	var feminino = ["001-min.jpg", "002-min.jpg", "005-min.jpg", "006-min.jpg", "010-min.jpg", "012-min.jpg", "015-min.jpg", "017-min.jpg", "018-min.jpg",
 		"023-min.jpg", "028-min.jpg", "031-min.jpg", "032-min.jpg", "034-min.jpg", "036-min.jpg", "038-min.jpg", "040-min.jpg"
 	];
+	var all = ["001-min.jpg", "002-min.jpg", "003-min.jpg", "004-min.jpg", "005-min.jpg", "006-min.jpg", "007-min.jpg", "008-min.jpg", "009-min.jpg", "010-min.jpg",
+		"011-min.jpg", "012-min.jpg", "013-min.jpg", "014-min.jpg", "015-min.jpg", "016-min.jpg", "017-min.jpg", "018-min.jpg", "019-min.jpg", "020-min.jpg", "021-min.jpg", "022-min.jpg", "023-min.jpg", "024-min.jpg", "025-min.jpg",
+		"026-min.jpg", "027-min.jpg", "028-min.jpg", "029-min.jpg", "030-min.jpg", "031-min.jpg", "032-min.jpg", "033-min.jpg", "034-min.jpg", "035-min.jpg", "036-min.jpg", "037-min.jpg",
+		"038-min.jpg", "039-min.jpg", "040-min.jpg", "041-min.jpg"
+	];
 	var filter = null;
 
 	$('.controlGa').click(function () {
@@ -395,6 +400,7 @@ jQuery(function ($) {
 		$('.background-gallery').css('display', 'none');
 		$('#gallery-slider-masculino').css('display', 'none');
 		$('#gallery-slider-feminino').css('display', 'none');
+		$('#gallery-slider').css('display', 'none');
 		$('.fa.fa-times').css('display', 'none');
 	});
 
@@ -418,26 +424,39 @@ jQuery(function ($) {
 
 	var videos = ['video-colecao-verao.mp4', 'video1.mp4', 'video2.mp4', 'video3.mp4', 'video4.mp4', 'video5.mp4'];
 	var indexVideos = 0;
+	var players = [player];
+	for (var i = 1; i < videos.length; i++)
+		players.push("");
 
 	$('i.fa.fa-chevron-right').click(slider_videos);
 	$('i.fa.fa-chevron-left').click(slider_videos);
+
 	function slider_videos() {
+		var sideAnimation = "";
+		var otherAnimation = "";
+
 		$('#my-player' + indexVideos).css('display', 'none');
-		if ($(this).hasClass('fa-chevron-right'))
+		players[indexVideos].pause();
+		if ($(this).hasClass('fa-chevron-right')) {
 			if (indexVideos == videos.length - 1)
 				indexVideos = 0;
 			else
 				indexVideos++;
-		else
+			sideAnimation = 'animated slideInRight';
+			otherAnimation = 'animated slideInLeft';
+		} else {
 			if (indexVideos == 0)
-				indexVideos = videos.length-1;
+				indexVideos = videos.length - 1;
 			else
 				indexVideos--;
-
+			sideAnimation = 'animated slideInLeft';
+			otherAnimation = 'animated slideInRight';
+		}
 		if ($('#my-player' + indexVideos).length == 0) {
-			$('.slider-videos').append('<video id="my-player' + indexVideos + '" class="video-js" controls preload="auto" data-setup="{}"> <source src="videos/' + videos[indexVideos] + '" type="video/mp4">	</video>');
+			$('.slider-videos').append('<video id="my-player' + indexVideos + '" class="video-js ' + sideAnimation + '" controls preload="auto" data-setup="{}"> <source src="videos/' + videos[indexVideos] + '" type="video/mp4">	</video>');
 			var playerAux = videojs('my-player' + indexVideos);
 			playerAux.downloadButton();
+			players[indexVideos] = playerAux;
 
 			playerAux.on('fullscreenchange', function () {
 				if ($('#gallery-videos').hasClass('animated'))
@@ -449,7 +468,74 @@ jQuery(function ($) {
 
 			$('#my-player' + indexVideos + '_html5_api').width('100%');
 			$('#my-player' + indexVideos + '_html5_api').height('100%');
-		} else
+		} else {
+			$('#my-player' + indexVideos).removeClass(otherAnimation);
+			$('#my-player' + indexVideos).addClass(sideAnimation);
 			$('#my-player' + indexVideos).css('display', 'block');
+		}
 	}
+
+	var grid = $('.grid');
+	/*
+	var indexImages = 0;
+	for (var i=0; i<all.length; i++){
+		grid.find('.col-md-4.'+indexImages).append('<div class="grid-item"><img class="img-lazyload" src="images/colecao-min/'+all[i]+'" value="'+i+'"></div>')
+		if (indexImages == 2)
+			indexImages = 0;
+		else
+			indexImages++;
+	}
+	*/
+	//$('.img-lazyload').lazyload();
+	grid.isotope({
+		itemSelector: '.grid-item',
+		layoutMode: 'fitRows'
+	});
+
+	$('.bt-filter').click(function () {
+		grid.isotope({
+			filter: $(this).attr('data-filter')
+		});
+		var bts = $('.bt-filter');
+		for (var i = 0; i < bts.length; i++)
+			$(bts[i]).removeClass('bt-active');
+		$(this).addClass('bt-active');
+	});
+
+	$('.img-isotope').click(function () {
+		if ($(window).width() >= 1024) {
+
+			$('body').css('overflow', 'hidden');
+			$('.background-gallery').css('display', 'block');
+			$('.background-gallery').css('height', $('body').height());
+			$('#gallery-slider').css('display', 'block');
+			$('.fa.fa-times').css('display', 'block');
+			$('.fa.fa-times').css('top', $(window).scrollTop() + 25);
+
+			var active = $('.bt-active');
+			var inUse = []
+			if ((active.length == 0 || active.attr('data-filter') == "*") && active.attr('value') != "all"){
+				inUse = all;
+				active.attr('value', "all");
+			}
+			else if (active.attr('data-filter') == ".masculino" && active.attr('value') != "masculino"){
+				inUse = masculino;
+				active.attr('value', 'masculino');
+			}
+			else if (active.attr('value') != "feminino"){
+				inUse = feminino;
+				active.attr('value', 'feminino');
+			}
+			if (inUse.length == 0)
+				$('#gallery-slider').html('');
+			for (var i = 0; i < inUse.length; i++)
+				$('#gallery-slider').append('<img alt="Coleção Verão 2017" src="images/colecao-min/' + inUse[i] + '" data-image="images/colecao-min/' + inUse[i] + '" data-description="Coleção Verão 2017">');
+
+			$("#gallery-slider").unitegallery();
+
+			$('#gallery-slider').css('top', $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2)
+		}
+	});
+
+
 });

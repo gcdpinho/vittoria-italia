@@ -272,7 +272,6 @@ ul.nostyle i {
 }
 
 #main-slider .slider-inner h2 {
-  
   font-size: 36px;
   line-height: 1;
   text-transform: uppercase;
@@ -1057,7 +1056,7 @@ ul.nostyle i {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
@@ -1135,7 +1134,8 @@ ul.nostyle i {
   }
 }
 
-#videos, #contato {
+#videos,
+#contato {
   background-color: #eeee;
 }
 
@@ -1147,7 +1147,7 @@ ul.nostyle i {
   padding: 100px 0;
 }
 
-#galeria{
+#galeria {
   display: none;
 }
 
@@ -1162,6 +1162,19 @@ ul.nostyle i {
   margin-bottom: 2em;
 }
 
+.grid-item {
+  width: 33.333%;
+}
+
+.grid {
+  margin-top: 2em;
+}
+
+.img-isotope {
+  width: 100%;
+  cursor: pointer;
+}
+
 .background-gallery {
   display: none;
   background-color: black;
@@ -1172,7 +1185,8 @@ ul.nostyle i {
 }
 
 #gallery-slider-masculino,
-#gallery-slider-feminino {
+#gallery-slider-feminino,
+#gallery-slider {
   display: none;
   position: absolute;
   z-index: 999999;
@@ -1215,44 +1229,76 @@ p {
   margin-top: 1em;
 }
 
-.slider-back{
+.slider-back {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 1em;
 }
 
-.p-title{
+.p-title {
   padding: 30px 30px 15px;
 }
 
-.p-item{
-  padding: 0 30px 30px; 
+.p-item {
+  padding: 0 30px 30px;
 }
 
-a.aznicsis:hover{
+a.aznicsis:hover {
   font-weight: bold;
   color: white !important;
 }
 
-.slider-videos{
+.slider-videos {
   margin: auto;
 }
 
-#gallery-videos{
+#gallery-videos {
   margin-top: 5em;
   display: flex;
   align-items: center;
 }
 
-.section-header .other.section-title:before{
+.section-header .other.section-title:before {
   background: white;
 }
 
-.section-header .other.section-title:after{
+.section-header .other.section-title:after {
   border: 5px solid #fffe;
 }
 
-i.fa.fa-chevron-right, i.fa.fa-chevron-left{
+i.fa.fa-chevron-right,
+i.fa.fa-chevron-left {
   cursor: pointer;
-  font-size:35px;
+  font-size: 35px;
 }
 
+i.fa.fa-chevron-right:hover,
+i.fa.fa-chevron-left:hover {
+  color: #6f1918;
+}
+
+.grid .col-md-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bt-filter {
+  background-color: transparent;
+  border: 2px solid #6f1918;
+  color: #6f1918;
+  font-weight: 500;
+  margin: 0 0.5em;
+}
+
+.bt-filter:hover,
+.bt-filter:active,
+.bt-filter:focus {
+  background-color: #6f1918;
+  color: white;
+  outline: thin dotted;
+  outline-offset: 0;
+}
+
+.bt-active {
+  background-color: #6f1918;
+  color: white;
+}
