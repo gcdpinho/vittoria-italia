@@ -1239,6 +1239,8 @@ a.aznicsis:hover{
 
 #gallery-videos{
   margin-top: 5em;
+  display: flex;
+  align-items: center;
 }
 
 .section-header .other.section-title:before{
@@ -1247,5 +1249,10 @@ a.aznicsis:hover{
 
 .section-header .other.section-title:after{
   border: 5px solid #fffe;
+}
+
+i.fa.fa-chevron-right, i.fa.fa-chevron-left{
+  cursor: pointer;
+  font-size:35px;
 }
 
