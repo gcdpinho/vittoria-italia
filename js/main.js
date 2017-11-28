@@ -493,7 +493,7 @@ jQuery(function ($) {
 
 	var valueImage = 0;
 	var api = null;
-	$('.img-isotope').click(function () {
+	$('.img-zoom').click(function () {
 		if ($(window).width() >= 1024) {
 
 			$('body').css('overflow-y', 'hidden');
@@ -510,18 +510,18 @@ jQuery(function ($) {
 				if ($('#gallery-slider').attr('value') != "all") {
 					inUse = all;
 					$('#gallery-slider').attr('value', "all");
-					valueImage = $(this).attr('value');
+					valueImage = $(this).closest('.grid-item').find('img').attr('value');
 				}
 			} else if (active.attr('data-filter') == ".masculino") {
 				if ($('#gallery-slider').attr('value') != "masculino") {
 					inUse = masculino;
 					$('#gallery-slider').attr('value', 'masculino');
-					valueImage = $(this).attr('data-masc');
+					valueImage = $(this).closest('.grid-item').find('img').attr('data-masc');
 				}
 			} else if ($('#gallery-slider').attr('value') != "feminino") {
 				inUse = feminino;
 				$('#gallery-slider').attr('value', 'feminino');
-				valueImage = $(this).attr('data-fem');
+				valueImage = $(this).closest('.grid-item').find('img').attr('data-fem');
 			}
 			if (inUse.length != 0) {
 				$('#gallery-slider').remove();
