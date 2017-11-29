@@ -580,5 +580,6 @@ jQuery(function ($) {
 		$('.fa.fa-times').css('display', 'none');
 	});
 
-	$('#gallery-videos').find('.owl-carousel').owlCarousel();
+	$('.bt-active').click();
+	//$('#gallery-videos').find('.owl-carousel').owlCarousel();
 });
