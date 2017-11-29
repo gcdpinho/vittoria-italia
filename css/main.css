@@ -195,6 +195,10 @@ ul.nostyle i {
   padding: 22px 15px 21px;
 }
 
+.nav.navbar-nav .scroll{
+  text-transform: uppercase;
+}
+
 @media only screen and (min-width: 768px) {
   #main-menu.navbar-default {
     background: rgba(255, 255, 255, 0.9);
@@ -250,18 +254,21 @@ ul.nostyle i {
   }
 }
 
-#main-slider {
+#main-slider,
+#gallery-videos {
   overflow: hidden;
 }
 
-#main-slider .item {
+#main-slider .item,
+#gallery-videos .item {
   height: 558px;
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
 }
 
-#main-slider .slider-inner {
+#main-slider .slider-inner,
+#gallery-videos .slider-inner {
   position: absolute;
   top: 0;
   left: 0;
@@ -272,23 +279,28 @@ ul.nostyle i {
   align-items: center;
 }
 
-#main-slider .slider-inner h2 {
+#main-slider .slider-inner h2,
+#gallery-videos .slider-inner h2 {
   font-size: 36px;
   line-height: 1;
   text-transform: uppercase;
   color: #fff;
 }
 
-#main-slider .slider-inner h2>span {
+#main-slider .slider-inner h2>span,
+#gallery-videos .slider-inner h2>span {
   color: #6f1918;
 }
 
-#main-slider .slider-inner .btn {
+#main-slider .slider-inner .btn,
+#gallery-videos .slider-inner .btn {
   margin-top: 10px;
 }
 
 #main-slider .owl-prev,
-#main-slider .owl-next {
+#main-slider .owl-next,
+#gallery-videos .owl-next,
+#gallery-videos .owl-prev {
   position: absolute;
   top: 50%;
   background-color: rgba(0, 0, 0, 0.2);
@@ -307,16 +319,27 @@ ul.nostyle i {
 }
 
 #main-slider .owl-prev:hover,
-#main-slider .owl-next:hover {
+#main-slider .owl-next:hover,
+#gallery-videos .owl-prev:hover,
+#gallery-videos .owl-next:hover {
   background-color: #6f1918;
 }
 
-#main-slider .owl-prev {
+#main-slider .owl-prev,
+#gallery-videos .owl-prev {
   left: -35px;
   text-indent: 14px;
 }
 
-#main-slider .owl-next {
+#main-slider .owl-prev:focus,
+#gallery-videos .owl-prev:focus,
+#main-slider .owl-next:focus,
+#gallery-videos .owl-next:focus{
+  outline: none;
+}
+
+#main-slider .owl-next,
+#gallery-videos .owl-next {
   right: -35px;
   text-indent: -14px;
 }
@@ -1248,12 +1271,11 @@ a.aznicsis:hover {
   color: white !important;
 }
 
-.slider-videos {
+.video-js {
   margin: auto;
 }
 
 #gallery-videos {
-  margin-top: 5em;
   display: flex;
   align-items: center;
 }
@@ -1266,13 +1288,14 @@ a.aznicsis:hover {
   border: 5px solid #fffe;
 }
 
-i.fa.fa-chevron-right{
+i.fa.fa-chevron-right {
   cursor: pointer;
   font-size: 35px;
   position: absolute;
   right: 7.5%;
   color: #6f1918;
 }
+
 i.fa.fa-chevron-left {
   cursor: pointer;
   font-size: 35px;
@@ -1314,46 +1337,43 @@ i.fa.fa-chevron-left:hover {
   color: white;
 }
 
-.img-zoom{
+.img-zoom {
   opacity: 0;
   display: flex;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
-.background-img{
+.background-img {
   display: flex;
   align-items: center;
   margin: auto;
 }
 
-i.fa.fa-search-plus{
+i.fa.fa-search-plus {
   color: white;
   font-size: 3em;
 }
 
-#main-contact-form{
+#main-contact-form {
   margin-top: 2em;
 }
 
 @media only screen and (max-width: 1023px) {
-  .section-header .section-title{
+  .section-header .section-title {
     font-size: 36px;
   }
-
-  .grid-item{
+  .grid-item {
     width: 100%;
   }
-
-
 }
 
-@media only screen and (min-width: 1024px){
-  .img-zoom:hover{
-    -webkit-transition: all ease .5s; 
+@media only screen and (min-width: 1024px) {
+  .img-zoom:hover {
+    -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;
     opacity: 1;
@@ -1361,13 +1381,24 @@ i.fa.fa-search-plus{
 }
 
 @media only screen and (max-width: 359px) {
-  .bt-filter{
+  .bt-filter {
     margin: 0;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-  .vc_single_image-img{
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .vc_single_image-img {
     width: 40%;
   }
+}
+
+.slide-progress {
+  width: 0;
+  max-width: 100%;
+  height: 4px;
+  background: #6f1918;
+}
+
+.item{
+  display: flex;
 }
