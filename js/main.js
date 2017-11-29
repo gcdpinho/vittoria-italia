@@ -399,12 +399,11 @@ jQuery(function ($) {
 		$('#my-player0').height($('#my-player0').width() / 2);
 		$('#my-player1').width($(window).width() * 60 / 100);
 		$('#my-player1').height($('#my-player1').width() / 2);
-	}
-	else {
+	} else {
 		$('#my-player0').width($(window).width() * 90 / 100);
 		$('#my-player0').height($('#my-player0').width() / 1.5);
 	}
-	
+
 	//$('#my-player').css('margin-left', $(window).width()/2 - $('#my-player').width()/2);
 
 	var player = videojs('my-player0');
@@ -463,8 +462,7 @@ jQuery(function ($) {
 			if ($(window).width() >= 1024) {
 				$('#my-player' + indexVideos).width($(window).width() * 60 / 100);
 				$('#my-player' + indexVideos).height($('#my-player' + indexVideos).width() / 2);
-			}
-			else {
+			} else {
 				$('#my-player' + indexVideos).width($(window).width() * 90 / 100);
 				$('#my-player' + indexVideos).height($('#my-player' + indexVideos).width() / 1.5);
 			}
@@ -491,9 +489,10 @@ jQuery(function ($) {
 	*/
 	//$('.img-lazyload').lazyload();
 	var grid = $('.grid');
-	grid.isotope({
-		itemSelector: '.grid-item',
-		layoutMode: 'fitRows'
+	grid.imagesLoaded(function () {
+		grid.isotope({
+			itemSelector: '.grid-item',
+		});
 	});
 
 	$('.bt-filter').click(function () {
@@ -580,6 +579,6 @@ jQuery(function ($) {
 		$('.fa.fa-times').css('display', 'none');
 	});
 
-	$('.bt-active').click();
+	//$('.bt-active').click();
 	//$('#gallery-videos').find('.owl-carousel').owlCarousel();
 });
