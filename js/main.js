@@ -418,7 +418,7 @@ jQuery(function ($) {
 	for (var i = 0; i < videos.length; i++) {
 		$('#my-player' + i).width($(window).width() * widthVideo / 100);
 		$('#my-player' + i).css('max-height', $('.item').height());
-		$('#my-player' + i).height($('#my-player' + i).width() / 2);
+		$('#my-player' + i).height($('#my-player' + i).width() / heightVideo);
 
 		var player = videojs('my-player' + i);
 		player.downloadButton();
@@ -660,7 +660,7 @@ jQuery(function ($) {
 			items: 1,
 			loop: true,
 			nav: true,
-			dots: true,
+			dots: false
 		});
 
 		$('#gallery-videos').find('.owl-carousel').on('changed.owl.carousel', function (event) {

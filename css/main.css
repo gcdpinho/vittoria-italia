@@ -65,7 +65,11 @@ hr {
 }
 
 .section-header {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+}
+
+#contato .section-header{
+  margin-bottom: 0;
 }
 
 .section-header .section-title {
@@ -259,8 +263,7 @@ ul.nostyle i {
   overflow: hidden;
 }
 
-#main-slider .item,
-#gallery-videos .item {
+#main-slider .item {
   height: 558px;
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -1245,7 +1248,7 @@ p {
 }
 
 .vc_single_image-img {
-  width: 40%;
+  width: 25%;
 }
 
 .mt1em {
@@ -1369,14 +1372,6 @@ i.fa.fa-search-plus {
   .grid-item {
     width: 100%;
   }
-
-  .owl-carousel.owl-drag .owl-item {
-    pointer-events: none;
-  }
-  
-  .vjs-big-play-button, .vjs-control-bar {
-    pointer-events: auto;
-  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1456,3 +1451,12 @@ footer .row.text-right {
   }
 }
 
+@media only screen and (max-height: 1024px) {
+  .owl-carousel.owl-drag .owl-item {
+    pointer-events: none;
+  }
+  .vjs-big-play-button,
+  .vjs-control-bar {
+    pointer-events: auto;
+  }
+}
