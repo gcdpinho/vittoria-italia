@@ -7,7 +7,7 @@ jQuery(function ($) {
 	});
 
 	$('.navbar-collapse ul li a').on('click', function () {
-		
+
 		$('html, body').animate({
 			scrollTop: $(this.hash).offset().top - 100
 		}, 1000);
@@ -27,14 +27,14 @@ jQuery(function ($) {
 		$('.navbar-collapse').find('.scroll a').each(function () {
 			contentTop.push($($(this).attr('href')).offset().top);
 			contentBottom.push($($(this).attr('href')).offset().top + $($(this).attr('href')).height());
-			
+
 		})
 		$.each(contentTop, function (i) {
 			if (winTop > contentTop[i] - rangeTop) {
 				$('.navbar-collapse li.scroll')
 					.removeClass('active')
 					.eq(i).addClass('active');
-				
+
 			}
 		})
 
@@ -407,8 +407,9 @@ jQuery(function ($) {
 
 	var videos = ['video-colecao-verao.mp4', 'video1.mp4', 'video2.mp4', 'video3.mp4', 'video4.mp4', 'video5.mp4'];
 	var widthVideo = 60;
-	var heightVideo = 2.2;
+	var heightVideo = 2;
 	var playersVideo = []
+	console.log();
 	if ($(window).width() < 1024) {
 		widthVideo = 100;
 		heightVideo = 1.5;
@@ -416,7 +417,8 @@ jQuery(function ($) {
 
 	for (var i = 0; i < videos.length; i++) {
 		$('#my-player' + i).width($(window).width() * widthVideo / 100);
-		$('#my-player' + i).height($('#my-player' + i).width() / heightVideo);
+		$('#my-player' + i).css('max-height', $('.item').height());
+		$('#my-player' + i).height($('#my-player' + i).width() / 2);
 
 		var player = videojs('my-player' + i);
 		player.downloadButton();
@@ -607,14 +609,19 @@ jQuery(function ($) {
 	});
 
 	$('.fa.fa-times').click(function () {
-		$('body').css('overflow-y', 'auto');
+		$('#gallery-slider').removeClass('fadeInDown animated');
+		$('#gallery-slider').addClass('animated fadeOutUp');
+		setTimeout(function () {
+			$('body').css('overflow-y', 'auto');
 
-		$('.background-gallery').css('display', 'none');
-		api.stop();
-		//$('#gallery-slider-masculino').css('display', 'none');
-		//$('#gallery-slider-feminino').css('display', 'none');
-		$('#gallery-slider').css('display', 'none');
-		$('.fa.fa-times').css('display', 'none');
+			$('.background-gallery').css('display', 'none');
+			api.stop();
+			//$('#gallery-slider-masculino').css('display', 'none');
+			//$('#gallery-slider-feminino').css('display', 'none');
+			$('#gallery-slider').css('display', 'none');
+			$('.fa.fa-times').css('display', 'none');
+		}, 500);
+
 	});
 
 	$(document).ready(function () {
@@ -653,7 +660,7 @@ jQuery(function ($) {
 			items: 1,
 			loop: true,
 			nav: true,
-			dots: false,
+			dots: false
 		});
 
 		$('#gallery-videos').find('.owl-carousel').on('changed.owl.carousel', function (event) {
@@ -666,7 +673,4 @@ jQuery(function ($) {
 		});
 	});
 
-
-	//$('.bt-active').click();
-	//$('#gallery-videos').find('.owl-carousel').owlCarousel();
 });
