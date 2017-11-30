@@ -660,7 +660,7 @@ jQuery(function ($) {
 			items: 1,
 			loop: true,
 			nav: true,
-			dots: true
+			dots: true,
 		});
 
 		$('#gallery-videos').find('.owl-carousel').on('changed.owl.carousel', function (event) {
