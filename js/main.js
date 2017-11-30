@@ -660,16 +660,12 @@ jQuery(function ($) {
 			items: 1,
 			loop: true,
 			nav: true,
-			dots: false
+			dots: true
 		});
 
 		$('#gallery-videos').find('.owl-carousel').on('changed.owl.carousel', function (event) {
 			for (var i = 0; i < playersVideo.length; i++)
-				if ($('#my-player' + i).hasClass('vjs-playing')) {
-					playersVideo[i].pause();
-					break;
-				}
-
+				playersVideo[i].pause();
 		});
 	});
 
