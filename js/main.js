@@ -57,91 +57,6 @@ jQuery(function ($) {
 		$(this).closest('.panel-heading').toggleClass('active');
 	});
 
-	//Slider
-	/*
-	$(document).ready(function () {
-		var time = 10; // time in seconds
-
-		var $progressBar,
-			$bar,
-			$elem,
-			isPause,
-			tick,
-			percentTime;
-
-		//Init the carousel
-		$("#main-slider").find('.owl-carousel').owlCarousel({
-			slideSpeed: 500,
-			paginationSpeed: 500,
-			singleItem: true,
-			navigation: true,
-			navigationText: [
-				"<i class='fa fa-angle-left'></i>",
-				"<i class='fa fa-angle-right'></i>"
-			],
-			afterInit: progressBar,
-			afterMove: moved,
-			startDragging: pauseOnDragging,
-			//autoHeight : true,
-			transitionStyle: "backSlide"
-		});
-
-		//Init progressBar where elem is $("#owl-demo")
-		function progressBar(elem) {
-			$elem = elem;
-			//build progress bar elements
-			buildProgressBar();
-			//start counting
-			start();
-		}
-
-		//create div#progressBar and div#bar then append to $(".owl-carousel")
-		function buildProgressBar() {
-			$progressBar = $("<div>", {
-				id: "progressBar"
-			});
-			$bar = $("<div>", {
-				id: "bar"
-			});
-			$progressBar.append($bar).appendTo($elem);
-		}
-
-		function start() {
-			//reset timer
-			percentTime = 0;
-			isPause = false;
-			//run interval every 0.01 second
-			tick = setInterval(interval, 10);
-		};
-
-		function interval() {
-			if (isPause === false) {
-				percentTime += 1 / time;
-				$bar.css({
-					width: percentTime + "%"
-				});
-				//if percentTime is equal or greater than 100
-				if (percentTime >= 100) {
-					//slide to next item 
-					$elem.trigger('owl.next')
-				}
-			}
-		}
-
-		//pause while dragging 
-		function pauseOnDragging() {
-			isPause = true;
-		}
-
-		//moved callback
-		function moved() {
-			//clear interval
-			clearTimeout(tick);
-			//start again
-			start();
-		}
-	});
-	*/
 	//Initiat WOW JS
 	new WOW().init();
 	//smoothScroll
@@ -417,7 +332,6 @@ jQuery(function ($) {
 
 	for (var i = 0; i < videos.length; i++) {
 		$('#my-player' + i).width($(window).width() * widthVideo / 100);
-		$('#my-player' + i).css('max-height', $('.item').height());
 		$('#my-player' + i).height($('#my-player' + i).width() / heightVideo);
 
 		var player = videojs('my-player' + i);
@@ -427,112 +341,27 @@ jQuery(function ($) {
 			if ($('#gallery-videos').hasClass('animated'))
 				$('#gallery-videos').removeClass('animated');
 		});
+		player.on('play', function () {
+			for (var j = 0; j < playersVideo.length; j++)
+				if (playersVideo[j] != this)
+					playersVideo[j].pause();
+		});
+
 		playersVideo.push(player);
 		$('#my-player' + i + '_html5_api').width('100%');
 		$('#my-player' + i + '_html5_api').height('100%');
 	}
 
-
-	/*
-	if ($(window).width() >= 1024) {
-		$('#my-player0').width($(window).width() * 60 / 100);
-		$('#my-player0').height($('#my-player0').width() / 2);
-		$('#my-player1').width($(window).width() * 60 / 100);
-		$('#my-player1').height($('#my-player1').width() / 2);
-	} else {
-		$('#my-player0').width($(window).width() * 90 / 100);
-		$('#my-player0').height($('#my-player0').width() / 1.5);
-	}
-
-	//$('#my-player').css('margin-left', $(window).width()/2 - $('#my-player').width()/2);
-
-	var player = videojs('my-player0');
-	player.downloadButton();
-
-	player.on('fullscreenchange', function () {
-		if ($('#gallery-videos').hasClass('animated'))
-			$('#gallery-videos').removeClass('animated');
-	});
-
-	$('#my-player0_html5_api').width('100%');
-	$('#my-player0_html5_api').height('100%');
-
-	/*
-	
-	var indexVideos = 0;
-	var players = [player];
-	for (var i = 1; i < videos.length; i++)
-		players.push("");
-
-	$('i.fa.fa-chevron-right').click(slider_videos);
-	$('i.fa.fa-chevron-left').click(slider_videos);
-
-	function slider_videos() {
-		var sideAnimation = "";
-		var otherAnimation = "";
-
-		$('#my-player' + indexVideos).css('display', 'none');
-		players[indexVideos].pause();
-		if ($(this).hasClass('fa-chevron-right')) {
-			if (indexVideos == videos.length - 1)
-				indexVideos = 0;
-			else
-				indexVideos++;
-			sideAnimation = 'animated slideInRight';
-			otherAnimation = 'animated slideInLeft';
-		} else {
-			if (indexVideos == 0)
-				indexVideos = videos.length - 1;
-			else
-				indexVideos--;
-			sideAnimation = 'animated slideInLeft';
-			otherAnimation = 'animated slideInRight';
-		}
-		if ($('#my-player' + indexVideos).length == 0) {
-			$('.slider-videos').append('<video id="my-player' + indexVideos + '" class="video-js ' + sideAnimation + '" controls preload="auto" data-setup="{}"> <source src="videos/' + videos[indexVideos] + '" type="video/mp4">	</video>');
-			var playerAux = videojs('my-player' + indexVideos);
-			playerAux.downloadButton();
-			players[indexVideos] = playerAux;
-
-			playerAux.on('fullscreenchange', function () {
-				if ($('#gallery-videos').hasClass('animated'))
-					$('#gallery-videos').removeClass('animated');
-			});
-
-			if ($(window).width() >= 1024) {
-				$('#my-player' + indexVideos).width($(window).width() * 60 / 100);
-				$('#my-player' + indexVideos).height($('#my-player' + indexVideos).width() / 2);
-			} else {
-				$('#my-player' + indexVideos).width($(window).width() * 90 / 100);
-				$('#my-player' + indexVideos).height($('#my-player' + indexVideos).width() / 1.5);
-			}
-
-			$('#my-player' + indexVideos + '_html5_api').width('100%');
-			$('#my-player' + indexVideos + '_html5_api').height('100%');
-		} else {
-			$('#my-player' + indexVideos).removeClass(otherAnimation);
-			$('#my-player' + indexVideos).addClass(sideAnimation);
-			$('#my-player' + indexVideos).css('display', 'block');
-		}
-	}
-
-
-	/*
-	var indexImages = 0;
-	for (var i=0; i<all.length; i++){
-		grid.find('.col-md-4.'+indexImages).append('<div class="grid-item"><img class="img-lazyload" src="images/colecao-min/'+all[i]+'" value="'+i+'"></div>')
-		if (indexImages == 2)
-			indexImages = 0;
-		else
-			indexImages++;
-	}
-	*/
-	//$('.img-lazyload').lazyload();
 	var grid = $('.grid');
 	grid.imagesLoaded(function () {
 		grid.isotope({
 			itemSelector: '.grid-item',
 		});
+	});
+
+	grid.one('arrangeComplete', function(){
+		$('.sk-fading-circle').css('display', 'none');
+		grid.css('visibility', 'visible');
 	});
 
 	$('.bt-filter').click(function () {
@@ -663,10 +492,7 @@ jQuery(function ($) {
 			dots: false
 		});
 
-		$('#gallery-videos').find('.owl-carousel').on('changed.owl.carousel', function (event) {
-			for (var i = 0; i < playersVideo.length; i++)
-				playersVideo[i].pause();
-		});
+
 	});
 
 });
