@@ -136,14 +136,29 @@ jQuery(function ($) {
 	var form = $('#main-contact-form');
 	form.submit(function (event) {
 		event.preventDefault();
+		var name = $("input#name").val();
+        var email = $("input#email").val();
+        var phone = $("input#phone").val();
+        var message = $("textarea#message").val();
 		var form_status = $('<div class="form_status"></div>');
 		$.ajax({
 			url: $(this).attr('action'),
+			type: "POST",
+			data: {
+				name: name,
+				phone: phone,
+				email: email,
+				message: message
+			  },
+			cache: false,
 			beforeSend: function () {
-				form.prepend(form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn());
+				form.prepend(form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando e-mail...</p>').fadeIn());
+			},
+			error: function() {
+				form_status.html('<p class="text-danger">Erro ao eviar mensagem. Tente novamente mais tarde!</p>').delay(3000).fadeOut();
 			}
 		}).done(function (data) {
-			form_status.html('<p class="text-success">Thank you for contact us. As early as possible  we will contact you</p>').delay(3000).fadeOut();
+			form_status.html('<p class="text-success">Mensagem enviada com sucesso!</p>').delay(3000).fadeOut();
 		});
 	});
 
@@ -316,7 +331,7 @@ jQuery(function ($) {
 		$('.img-gallery.' + gen).lazyload();
 	}
 
-	$('#google-map').height($('.contact-form').height() + 150);
+	$('#google-map').height($('.contact-form').height() + 250);
 	if ($(window).width() < 768)
 		$('#google-map').css('margin-top', $('.contact-form').height() + 150);
 

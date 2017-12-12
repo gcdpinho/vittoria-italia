@@ -598,19 +598,18 @@
                     <div class="col-sm-4 col-sm-offset-8">
                         <div class="contact-form">
                             <h3>Mande seu e-mail</h3>
-
-                            <form id="main-contact-form" name="contact-form" method="post" action="#">
+                            <form id="main-contact-form" name="contact-form" method="post" action="././mail/contact_me.php">
                                 <div class="form-group">
-                                    <input type="text" name="nome" class="form-control" placeholder="Nome" required>
+                                    <input type="text" name="nome" id="name" class="form-control" placeholder="Nome" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="assunto" class="form-control" placeholder="Assunto" required>
+                                    <input type="text" name="assunto" id="phone" class="form-control" placeholder="Telefone" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="mensagem" class="form-control" rows="8" placeholder="Mensagem" required></textarea>
+                                    <textarea name="mensagem" class="form-control" id="message" rows="8" placeholder="Mensagem" required></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
                             </form>
