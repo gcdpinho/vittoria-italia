@@ -16,8 +16,8 @@ $phone = strip_tags(htmlspecialchars($_POST['phone']));
 $message = strip_tags(htmlspecialchars($_POST['message']));
 	
 // Create the email and send the message
-$to = 'gcdpinho@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$too = 'ftprestes@gmail.com';
+$to = 'atendimento@vittoriaitalia.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+$too = 'comercial@vittoriaitalia.com';
 $email_subject = "Mensagem do site:  $name";
 $email_body = "Você recebeu uma nova mensagem do seu site.\n\n"."Aqui estão os detalhes:\n\nNome: $name\n\nE-mail: $email_address\n\nTelefone: $phone\n\nMensagem:\n$message";
 $headers = "De: noreply@vittoriaitalia.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
