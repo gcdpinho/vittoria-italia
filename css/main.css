@@ -1121,7 +1121,6 @@ ul.nostyle i {
 #footer ul {
   list-style: none;
   padding: 0;
-  margin: 0 -7.5px;
 }
 
 #footer ul>li {
@@ -1249,7 +1248,7 @@ p {
 }
 
 .vc_single_image-img {
-  width: 25%;
+  width: 250px;
 }
 
 .mt1em {
@@ -1454,10 +1453,24 @@ footer .row.text-right {
 }
 
 .logo-footer {
-  width: 20%;
+  width: 200px;
 }
 
+footer .vc_single_image-img {
+  width: 150px;
+}
 
+footer .fa.fa-instagram{
+  font-size: 25px;
+}
+
+.wd-100{
+  width: 100%;
+}
+
+.fl-rg{
+  float: right;
+}
 
 /* LOADER*/
 
