@@ -1607,3 +1607,9 @@ footer .fa.fa-instagram{
   0%, 39%, 100% { opacity: 0; }
   40% { opacity: 1; } 
 }
+
+/* .ug-item-wrapper img{
+  height: 100% !important;
+  width: auto !important;
+  top: 0 !important;
+} */

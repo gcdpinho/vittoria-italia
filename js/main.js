@@ -137,9 +137,9 @@ jQuery(function ($) {
 	form.submit(function (event) {
 		event.preventDefault();
 		var name = $("input#name").val();
-        var email = $("input#email").val();
-        var phone = $("input#phone").val();
-        var message = $("textarea#message").val();
+		var email = $("input#email").val();
+		var phone = $("input#phone").val();
+		var message = $("textarea#message").val();
 		var form_status = $('<div class="form_status"></div>');
 		$.ajax({
 			url: $(this).attr('action'),
@@ -149,12 +149,12 @@ jQuery(function ($) {
 				phone: phone,
 				email: email,
 				message: message
-			  },
+			},
 			cache: false,
 			beforeSend: function () {
 				form.prepend(form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando e-mail...</p>').fadeIn());
 			},
-			error: function() {
+			error: function () {
 				form_status.html('<p class="text-danger">Erro ao eviar mensagem. Tente novamente mais tarde!</p>').delay(3000).fadeOut();
 			}
 		}).done(function (data) {
@@ -287,7 +287,11 @@ jQuery(function ($) {
 				$('.fa.fa-times').css('top', $(window).scrollTop() + 25);
 				if (gen == "masculino") {
 					if (apiM == null) {
-						apiM = $('#gallery-slider-' + gen).unitegallery();
+						apiM = $('#gallery-slider-' + gen).unitegallery({
+							slider_zoom_max_ratio: 2,
+							slider_scale_mode: "fit",
+							slider_zoom_step: 1.2
+						});
 
 						apiM.on("enter_fullscreen", function () {
 							$('#gallery-slider-' + gen).css({
@@ -307,7 +311,11 @@ jQuery(function ($) {
 
 				} else {
 					if (apiF == null) {
-						apiF = $('#gallery-slider-' + gen).unitegallery();
+						apiF = $('#gallery-slider-' + gen).unitegallery({
+							slider_zoom_max_ratio: 2,
+							slider_scale_mode: "fit",
+							slider_zoom_step: 1.2
+						});
 
 						apiF.on("enter_fullscreen", function () {
 							$('#gallery-slider-' + gen).css({
@@ -374,7 +382,7 @@ jQuery(function ($) {
 		});
 	});
 
-	grid.one('arrangeComplete', function(){
+	grid.one('arrangeComplete', function () {
 		$('.sk-fading-circle').css('display', 'none');
 		grid.css('visibility', 'visible');
 	});
@@ -393,14 +401,12 @@ jQuery(function ($) {
 	var api = null;
 	$('.img-zoom').click(function () {
 		if ($(window).width() >= 1024) {
-
 			$('body').css('overflow-y', 'hidden');
 			$('.background-gallery').css('display', 'block');
 			$('.background-gallery').css('height', $('body').height());
 			$('#gallery-slider').css('display', 'block');
 			$('.fa.fa-times').css('display', 'block');
 			$('.fa.fa-times').css('top', $(window).scrollTop() + 25);
-
 			var active = $('.bt-active');
 			var inUse = []
 
@@ -429,7 +435,13 @@ jQuery(function ($) {
 					$('#gallery-slider').append('<img alt="Coleção Verão 2017" src="images/colecao-min/' + inUse[i] + '" data-image="images/colecao-min/' + inUse[i] + '" data-description="Coleção Verão 2017">');
 
 
-				api = $('#gallery-slider').unitegallery();
+				api = $('#gallery-slider').unitegallery({
+					slider_zoom_max_ratio: 2,
+					slider_scale_mode: "fit",
+					slider_zoom_step: 1.2
+				});
+
+
 
 				api.on("enter_fullscreen", function () {
 					$('#gallery-slider').css({
@@ -444,10 +456,12 @@ jQuery(function ($) {
 						'top': $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2
 					});
 				});
+				api.resetZoom()
 
 				api.selectItem(parseInt(valueImage));
 
-				$('#gallery-slider').css('top', $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2)
+				$('#gallery-slider').css('top', $(window).scrollTop() + $(window).height() / 2 - $('#gallery-slider').height() / 2);
+
 			}
 		}
 	});
