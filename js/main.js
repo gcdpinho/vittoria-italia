@@ -283,8 +283,8 @@ jQuery(function ($) {
 				$('.background-gallery').css('display', 'block');
 				$('.background-gallery').css('height', $('body').height())
 				$('#gallery-slider-' + gen).css('display', 'block');
-				$('.fa.fa-times').css('display', 'block');
-				$('.fa.fa-times').css('top', $(window).scrollTop() + 25);
+				$('#colecao .fa.fa-times').css('display', 'block');
+				$('#colecao .fa.fa-times').css('top', $(window).scrollTop() + 25);
 				if (gen == "masculino") {
 					if (apiM == null) {
 						apiM = $('#gallery-slider-' + gen).unitegallery({
@@ -405,8 +405,8 @@ jQuery(function ($) {
 			$('.background-gallery').css('display', 'block');
 			$('.background-gallery').css('height', $('body').height());
 			$('#gallery-slider').css('display', 'block');
-			$('.fa.fa-times').css('display', 'block');
-			$('.fa.fa-times').css('top', $(window).scrollTop() + 25);
+			$('#colecao .fa.fa-times').css('display', 'block');
+			$('#colecao .fa.fa-times').css('top', $(window).scrollTop() + 25);
 			var active = $('.bt-active');
 			var inUse = []
 
@@ -466,7 +466,7 @@ jQuery(function ($) {
 		}
 	});
 
-	$('.fa.fa-times').click(function () {
+	$('#colecao .fa.fa-times').click(function () {
 		$('#gallery-slider').removeClass('fadeInDown animated');
 		$('#gallery-slider').addClass('animated fadeOutUp');
 		setTimeout(function () {
@@ -477,7 +477,7 @@ jQuery(function ($) {
 			//$('#gallery-slider-masculino').css('display', 'none');
 			//$('#gallery-slider-feminino').css('display', 'none');
 			$('#gallery-slider').css('display', 'none');
-			$('.fa.fa-times').css('display', 'none');
+			$('#colecao .fa.fa-times').css('display', 'none');
 		}, 500);
 
 	});
@@ -523,5 +523,8 @@ jQuery(function ($) {
 
 
 	});
-
+	$('.background-modal').click(function (event) {
+		if (event.target.className == "background-modal" || event.target.className.indexOf("close-modal") != -1 )
+			$('.background-modal').css('display', 'none');
+	})
 });
