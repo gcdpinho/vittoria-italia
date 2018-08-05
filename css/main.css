@@ -1669,4 +1669,6 @@ footer .fa.fa-instagram {
 
 .background-modal img {
   cursor: default;
+  max-width: 100%;
+  max-height: 100%;
 }
